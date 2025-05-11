@@ -19,6 +19,7 @@ async function bootstrap() {
       process.env.ORIGIN_REACT,
       'https://react-learn-flax.vercel.app',
       'https://angular-refresh.vercel.app',
+      'https://angular-refresh.onrender.com/',
 
       'https://react-learn-3fn37hc78-adrianilie01s-projects.vercel.app',
       'http://localhost:4200',
