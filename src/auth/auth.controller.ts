@@ -76,6 +76,7 @@ export class AuthController {
         res.cookie('access_token', login.access_token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
+          sameSite: 'none',
           maxAge: parseInt(process.env.ACCESS_TOKEN_EXPIRES_IN)
         });
         console.log('cookie set');
@@ -94,6 +95,7 @@ export class AuthController {
         res.cookie('access_token', login.access_token_2fa.access_token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
+          sameSite: 'none',
           maxAge: parseInt(process.env.ACCESS_TOKEN_EXPIRES_IN)
         });
 
@@ -107,6 +109,7 @@ export class AuthController {
         res.cookie('refresh_token', login.refresh_token, {
           httpOnly: true, // Protejează cookie-ul de atacuri XSS
           secure: process.env.NODE_ENV === 'production', // Folosește ternary operator pentru a seta secure
+          sameSite: 'none',
           maxAge: parseInt(process.env.REFRESH_TOKEN_EXPIRES_IN)
         });
 

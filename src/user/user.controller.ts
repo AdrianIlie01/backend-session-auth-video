@@ -35,12 +35,8 @@ export class UserController {
     @Res() res,
     @Req() req ) {
     try {
-      const token = req;
-      console.log('req');
-      console.log(req.cookies);
 
       if (req.cookies && req.cookies.access_token) {
-        console.log('no ?');
         const token = req.cookies.access_token;
         const decodedToken = await this.userService.decodeToken(token);
 
