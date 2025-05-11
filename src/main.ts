@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import * as process from "process";
 import * as dotenv from 'dotenv';
 dotenv.config();
+import * as bodyParser from 'body-parser';
 
 const cookieParser = require('cookie-parser');
 
@@ -35,6 +36,9 @@ async function bootstrap() {
   });
 
   app.use(cookieParser());
+
+  app.use(bodyParser.json({ limit: '50mb' }));
+  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
   app.useGlobalPipes(new ValidationPipe());
 
