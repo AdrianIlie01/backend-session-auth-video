@@ -19,7 +19,6 @@ async function bootstrap() {
       process.env.ORIGIN_REACT,
       'https://react-learn-flax.vercel.app',
       'https://angular-refresh.vercel.app',
-      'https://angular-refresh.onrender.com',
 
       'https://react-learn-3fn37hc78-adrianilie01s-projects.vercel.app',
       'http://localhost:4200',
@@ -27,23 +26,11 @@ async function bootstrap() {
     ],
 
     exposedHeaders: ['x-forwarded-for', 'set-cookie'],
-    // allowedHeaders: ['Access-Control-Allow-Origin', 'Content-Type', 'Authorization', 'x-forwarded-for'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'x-forwarded-for'],
+    allowedHeaders: ['Content-Type', 'Accept', 'Authorization', 'x-forwarded-for'],
 
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
 
     credentials: true,
-  });
-
-  app.use((req, res, next) => {
-    if (req.method === 'OPTIONS') {
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-forwarded-for');
-      res.setHeader('Access-Control-Allow-Origin', 'https://angular-refresh.onrender.com');
-      res.setHeader('Access-Control-Allow-Credentials', 'true');
-      return res.status(200).end();
-    }
-    next();
   });
 
   app.use(cookieParser());
