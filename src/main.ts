@@ -37,8 +37,10 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  app.use(bodyParser.json({ limit: '50mb' }));
-  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+  //todo the next 2 lines are used to allow express to execute large body requests
+
+  // app.use(bodyParser.json({ limit: '50mb' }));
+  // app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
   app.useGlobalPipes(new ValidationPipe());
 
