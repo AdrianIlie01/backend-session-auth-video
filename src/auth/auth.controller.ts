@@ -50,18 +50,18 @@ export class AuthController {
       if (req.cookies['access_token']) {
         res.clearCookie('access_token', {
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
+          secure: true,
           sameSite: 'none',
-          maxAge: +process.env.ACCESS_TOKEN_EXPIRES_IN,
+          path: '/',
         });
       }
 
       if (req.cookies['refresh_token']) {
         res.clearCookie('refresh_token', {
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
+          secure: true,
           sameSite: 'none',
-          maxAge: +process.env.REFRESH_TOKEN_EXPIRES_IN,
+          path: '/',
         });
       }
 
@@ -210,7 +210,12 @@ export class AuthController {
   {
     try {
       const destroySession = await this.sessionService.destroySession(req.cookies.sessionId);
-      res.clearCookie('sessionId');
+      res.clearCookie('sessionId', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        path: '/',
+      });
 
       return res.status(HttpStatus.OK).json( { message: 'Logged out' });
     } catch (e) {
@@ -365,11 +370,22 @@ export class AuthController {
 
 
       if (req.cookies['access_token']) {
-        res.clearCookie('access_token');
-      }
+        res.clearCookie('access_token', {
+          httpOnly: true,
+          secure: true,
+          sameSite: 'none',
+          path: '/',
+        });
+
 
       if (req.cookies['refresh_token']) {
-        res.clearCookie('refresh_token');
+        res.clearCookie('refresh_token', {
+          httpOnly: true,
+          secure: true,
+          sameSite: 'none',
+          path: '/',
+        });
+      }
       }
 
       return res.status(200).json(logout);
