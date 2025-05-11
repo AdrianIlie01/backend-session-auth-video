@@ -21,8 +21,8 @@ export class RoomController {
   @Get('get-video/:name')
   async getVideo(@Res() res, @Param('name') name: string) {
     try {
-      // res.setHeader('Content-Type', 'video/mp4');
-      // res.sendFile(name, { root: 'uploaded-videos' });
+      res.setHeader('Content-Type', 'video/mp4');
+      res.sendFile(name, { root: 'uploaded-videos' });
     } catch (e) {
       return res.status(HttpStatus.BAD_REQUEST).json(e);
     }
