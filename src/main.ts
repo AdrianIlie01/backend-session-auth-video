@@ -19,6 +19,7 @@ async function bootstrap() {
       process.env.ORIGIN_REACT,
       'https://react-learn-flax.vercel.app',
       'https://angular-refresh.vercel.app',
+      'https://angular-refresh.onrender.com',
 
       'https://react-learn-3fn37hc78-adrianilie01s-projects.vercel.app',
       'http://localhost:4200',
@@ -28,7 +29,7 @@ async function bootstrap() {
     exposedHeaders: ['x-forwarded-for', 'set-cookie'],
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization', 'x-forwarded-for'],
 
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
 
     credentials: true,
   });
